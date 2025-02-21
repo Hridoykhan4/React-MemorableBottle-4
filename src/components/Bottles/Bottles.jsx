@@ -3,6 +3,7 @@ import { useState } from "react";
 import Bottle from "../Bottle/Bottle";
 import { addToLS, getCartItems, removeFromLS } from "../../Utils/localStorage";
 import Cart from "../Cart/Cart";
+import toast from "react-hot-toast";
 
 const Bottles = () => {
   const [bottles, setBottles] = useState([]);
@@ -15,8 +16,24 @@ const Bottles = () => {
   }, []);
 
   const handleAddToCart = (bottle) => {
-    setCart([...cart, bottle]);
-    addToLS(bottle.id);
+    const isExist = cart.find((adidas) => adidas.id === bottle.id);
+    console.log(isExist);
+    if (!isExist) {
+      setCart([...cart, bottle]);
+      addToLS(bottle.id);
+      toast.success("Added To Cart!!!", {
+        duration: 3000,
+        position: "top-right",
+        icon: "👏",
+        className: "text-xl p-7 font-semibold",
+      });
+    } else {
+      toast.error("Already Added!!!", {
+        duration: 3000,
+        position: "top-right",
+        className: "text-xl p-7 font-semibold",
+      });
+    }
   };
 
   useEffect(() => {
