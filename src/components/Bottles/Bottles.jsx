@@ -17,7 +17,6 @@ const Bottles = () => {
 
   const handleAddToCart = (bottle) => {
     const isExist = cart.find((adidas) => adidas.id === bottle.id);
-    console.log(isExist);
     if (!isExist) {
       setCart([...cart, bottle]);
       addToLS(bottle.id);
@@ -52,6 +51,9 @@ const Bottles = () => {
     const remaining = cart.filter((bottle) => bottle.id !== id);
     setCart(remaining);
     removeFromLS(id);
+    toast.success("Successfully Removed From Cart", {
+      position: "top right",
+    });
   };
 
   return (

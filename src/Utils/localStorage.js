@@ -14,10 +14,8 @@ const addToLS = (id) => {
 };
 
 const removeFromLS = (id) => {
-  console.log(id);
   const cart = getCartItems();
   const remaining = cart.filter((idx) => idx !== id);
-  console.log(remaining);
   saveCartToLS(remaining);
 };
 

@@ -6,7 +6,7 @@ const Cart = ({ cart, handleDelete }) => {
         Cart : {cart.length}
       </h2>
 
-      <div className="flex justify-center items-center mt-3 gap-3">
+      <div className="flex justify-center flex-wrap items-center mt-3 gap-3">
         {cart.map((bottle, id) => (
           <div key={id} className="space-y-3 text-center">
             <img className="w-32" key={id} src={bottle.img} />
